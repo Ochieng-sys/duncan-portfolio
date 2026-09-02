@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard | OD Services</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body class="admin-page">
+
+
+    <!-- =================================
+         ADMIN HEADER
+    ================================== -->
+
+    <header class="admin-header">
+
+        <a
+            href="../index.html"
+            class="admin-brand"
+        >
+            OD Services
+        </a>
+
+
+        <button
+            type="button"
+            id="logout-button"
+            class="logout-btn"
+        >
+            Logout
+        </button>
+
+    </header>
+
+
+
+    <!-- =================================
+         DASHBOARD
+    ================================== -->
+
+    <main class="admin-dashboard">
+
+
+        <!-- =================================
+             HEADING
+        ================================== -->
+
+        <section class="dashboard-heading">
+
+            <p class="section-label">
+                ADMINISTRATION
+            </p>
+
+            <h1>
+                Dashboard
+            </h1>
+
+            <p>
+                Manage your website and monitor
+                incoming enquiries from one place.
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================
+             STATISTICS
+        ================================== -->
+
+        <section class="dashboard-stats">
+
+
+            <!-- TOTAL -->
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    TOTAL ENQUIRIES
+                </span>
+
+                <strong id="total-enquiries">
+                    0
+                </strong>
+
+                <span class="stat-description">
+                    All enquiries
+                </span>
+
+            </div>
+
+
+
+            <!-- NEW -->
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    NEW
+                </span>
+
+                <strong id="new-enquiries">
+                    0
+                </strong>
+
+                <span class="stat-description">
+                    Awaiting review
+                </span>
+
+            </div>
+
+
+
+            <!-- READ -->
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    READ
+                </span>
+
+                <strong id="read-enquiries">
+                    0
+                </strong>
+
+                <span class="stat-description">
+                    Reviewed enquiries
+                </span>
+
+            </div>
+
+
+
+            <!-- REPLIED -->
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    REPLIED
+                </span>
+
+                <strong id="replied-enquiries">
+                    0
+                </strong>
+
+                <span class="stat-description">
+                    Completed enquiries
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================
+             RECENT ENQUIRIES
+        ================================== -->
+
+        <section class="recent-enquiries">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <p class="section-label">
+                        INBOX
+                    </p>
+
+                    <h2>
+                        Recent Enquiries
+                    </h2>
+
+                </div>
+
+            </div>
+
+<div class="enquiry-controls">
+
+    <input
+        type="search"
+        id="enquiry-search"
+        class="enquiry-search"
+        placeholder="Search name, email or service..."
+        autocomplete="off"
+    >
+
+
+    <select
+        id="status-filter"
+        class="status-filter"
+    >
+
+        <option value="all">
+            All Statuses
+        </option>
+
+        <option value="new">
+            New
+        </option>
+
+        <option value="read">
+            Read
+        </option>
+
+        <option value="replied">
+            Replied
+        </option>
+
+    </select>
+
+</div>
+
+
+            <div
+                id="enquiries-container"
+                class="enquiries-container"
+            >
+
+                <p class="loading-message">
+                    Loading enquiries...
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================
+             QUICK ACTIONS
+        ================================== -->
+
+        <section class="admin-panel">
+
+            <div>
+
+                <p class="section-label">
+                    QUICK ACTIONS
+                </p>
+
+                <h2>
+                    Website management
+                </h2>
+
+            </div>
+
+
+
+            <div class="admin-actions">
+
+
+                <a
+                    href="../index.html"
+                    class="admin-action"
+                >
+                    View Website →
+                </a>
+
+
+                <a
+                    href="../contact.html"
+                    class="admin-action"
+                >
+                    View Contact Page →
+                </a>
+
+
+                <a
+                    href="mailto:"
+                    class="admin-action"
+                >
+                    Check Email →
+                </a>
+
+
+            </div>
+
+        </section>
+
+        <!-- =================================
+     ENQUIRY MODAL
+================================== -->
+
+<div
+    id="enquiry-modal"
+    class="enquiry-modal"
+    hidden
+>
+
+    <div class="enquiry-modal-overlay"></div>
+
+
+    <div class="enquiry-modal-content">
+
+        <button
+            type="button"
+            id="close-enquiry-modal"
+            class="modal-close"
+        >
+            ×
+        </button>
+
+
+        <p class="section-label">
+            ENQUIRY DETAILS
+        </p>
+
+
+        <h2 id="modal-name">
+            -
+        </h2>
+
+
+        <p
+            id="modal-service"
+            class="enquiry-service"
+        >
+            -
+        </p>
+
+
+        <p
+            id="modal-date"
+            class="enquiry-date"
+        >
+            -
+        </p>
+
+
+        <div class="modal-detail">
+
+            <strong>
+                Email
+            </strong>
+
+            <a
+                id="modal-email"
+                href="#"
+            >
+                -
+            </a>
+
+        </div>
+
+
+        <div class="modal-detail">
+
+            <strong>
+                Message
+            </strong>
+
+            <p id="modal-message">
+                -
+            </p>
+
+        </div>
+
+
+        <div class="modal-detail">
+
+            <strong>
+                Status
+            </strong>
+
+            <span
+                id="modal-status"
+                class="status"
+            >
+                -
+            </span>
+
+        </div>
+
+
+       <div class="modal-actions">
+
+    <button
+        type="button"
+        id="mark-read-button"
+        class="admin-action"
+    >
+        Mark as Read
+    </button>
+
+
+    <button
+        type="button"
+        id="mark-replied-button"
+        class="admin-action"
+    >
+        Mark as Replied
+    </button>
+
+
+    <a
+        id="reply-email-button"
+        class="admin-action"
+        href="#"
+    >
+        Reply to Client →
+    </a>
+
+    <button
+    type="button"
+    id="delete-enquiry-button"
+    class="admin-action"
+>
+    Delete Enquiry
+</button>
+
+</div>
+
+    </div>
+
+</div>
+
+    </main>
+
+
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================== -->
+
+    <script src="../js/admin.js"></script>
+
+
+</body>
+
+</html>
